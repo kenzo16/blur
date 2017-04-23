@@ -11,3 +11,17 @@ for i = 1:a
     end
 end
 
+%Find Threshold from training data
+%threshold = findThreshold();
+threshold = -.5;
+%Classify with threshold
+for i = 1:a
+    for j = 1:b
+        if V(i,j) >= threshold 
+            K(i,j) = 'M';
+        else
+            K(i,j) = 'O';
+        end
+    end
+end
+K
