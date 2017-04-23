@@ -1,0 +1,32 @@
+function [threshold] = findThreshold( )
+    threshold = 0;
+    load('W.mat');
+    load('dataset_M.mat');
+    data1 = dataset;
+    load('dataset_O.mat');
+    data = [data1 ; dataset];
+    [a, b] = size(data);
+    count = 1;
+    
+    for i = 1:a
+       if(data(i,3) ~= 0)
+            val = w * [data(i,1) , data(i,2)]';
+            if val >= threshold 
+                if data(i,3) == 'M'
+                    POS = POS + 1;
+                else
+                    TPOS = TPOS + 1;
+                end
+            else
+                if data(i,3) == 'O'
+                    NEG = NEG + 1;
+                else
+                    TNEG = 
+                end
+            end
+            count = count+1;
+       end
+        
+    end
+end
+
