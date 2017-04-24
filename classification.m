@@ -25,4 +25,7 @@ for i = 1:a
         end
     end
 end
-K
+
+%Display final Image
+finalpic = dispImage(K);
+imshow(finalpic);
