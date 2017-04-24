@@ -1,5 +1,5 @@
 %function [threshold] = findThreshold( )
-    threshold = -2.31;
+    threshold = -.45;
     load('W.mat');
     w = w';
     load('dataset_M.mat');
@@ -10,24 +10,25 @@
 
     TPOS = 1; FPOS = 1; TNEG = 1; FNEG = 1;
     for i = 1:a
-       
-            tempval = w * [data(i,1)  data(i,2)]';
-            disp(tempval);
-            if tempval >= threshold 
-                if data(i,3) == 'M'
-                    TPOS = TPOS + 1;
-                else
-                    FPOS = FPOS + 1;
-                end
+        tempval = w * [data(i,1)  data(i,2)]';
+        A(i,1) = tempval;
+        A(i,2) = data(i,3);
+        if data(i,3) == 'M'
+            if tempval < threshold
+            	TPOS = TPOS + 1;
             else
-                if data(i,3) == 'O'
-                    TNEG = TNEG + 1;
-                else
-                    FNEG = FNEG + 1;
-                end
-            end 
+                FPOS = FPOS + 1;
+            end
+        else
+            if tempval >= threshold
+                TNEG = TNEG + 1;
+            else
+                FNEG = FNEG + 1;
+            end
+        end 
     end
     disp(TPOS*100/(TPOS+FPOS));
     disp(TNEG*100/(TNEG+FNEG));
+    
 %end
 
