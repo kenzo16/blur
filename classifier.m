@@ -12,6 +12,8 @@ n1=size(m_data,1);
 n2=size(o_data,1);
 
 %Mean of each class
+c1 = [m_data(:,1) m_data(:,2)];
+c2 = [o_data(:,1) o_data(:,2)];
 mu1=mean(c1);
 mu2=mean(c2);
 
@@ -32,5 +34,5 @@ invsw = inv(sw);
 % W is for reducing the dimensionality to genrate non-linear transform
 
 w = invsw * (mu1-mu2)';
-
+w
 %save('W.mat','w');
