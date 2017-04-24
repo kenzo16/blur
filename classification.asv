@@ -12,7 +12,7 @@ for i = 1:a
     end
 end
 
-%loading Threshold from training data
+%Find Threshold from training data
 load('threshold.mat');
 
 %Classify with threshold
