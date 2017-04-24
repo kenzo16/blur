@@ -33,4 +33,8 @@ invsw = inv(sw);
 
 w = invsw * (mu1-mu2)';
 
+
+
+
+
 %save('W.mat','w');
