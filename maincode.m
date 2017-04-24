@@ -1,4 +1,5 @@
 dirname='resdir'
+addpath(genpath('blindDeconvolution'));
 
 sig_noise=0.01;
 load test_data/sizeL
