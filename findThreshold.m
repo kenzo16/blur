@@ -1,4 +1,4 @@
-
+    %for evaluating the threshold for the classification
     load('W.mat');
     w = w';
     load('dataset_M.mat');

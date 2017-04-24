@@ -6,6 +6,7 @@ load('extracted_vals.mat');
 w = w';
 V = zeros(1,1);
 
+%evalutaion Vi,j for each gamma and sigma
 for i = 1:a
     for j = 1:b
         V(i,j) = w * [gamma_val(i,j) , sigma_val(i,j)]';

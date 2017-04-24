@@ -1,10 +1,9 @@
+%loading directories 
 dirname='resdir'
 addpath(genpath('blindDeconvolution'));
-
-sig_noise=0.01;
 load test_data/sizeL
 
-%%INITIALING LOOKUP TABLE
+%creating lookup table
 count = 1;
 val = zeros(180,2);
 for i = 0.2:0.01:3
@@ -14,25 +13,27 @@ for i = 0.2:0.01:3
 end
 save('lookupTable.mat','val');
 
-
+%loading image
 img = (rgb2gray(imread('pic.png')));
 
-
+%setting up block size
 [M N]=size(img);
-
-n=64; % block size
-m=64; %
+n=64;m=64;
 psfsize=9;
-i=0;j=0;
 p=floor(M/m);
 q=floor(N/n);
 
- count=1;
- gamma_val = zeros(5,5);
- sigma_val = zeros(5,5);
- 
+%initializations
+count=1;
+gamma_val = zeros(5,5);
+sigma_val = zeros(5,5);
+i=0;j=0;
+sig_noise=0.01;
+
+%repetetion for each blocks
 while i <= p
     while j <= q
+        %for non multiples of nxm
         rightedge = (i+1)*n;
         bottomedge = (j+1)*m;
         if i == p 
@@ -47,22 +48,25 @@ while i <= p
                 bottomedge = N;
             else 
                 break
-            end
-             
+            end 
         end
         
+        %block extracting
         pic = img(i*n+1:rightedge,j*n+1:bottomedge);
 
-        
+        %calling blind deconvolution
         [k]=deconv_diagfe_filt_sps(pic,psfsize,psfsize,.01,[],0);
+        
         %[k]=deconv_freq_filt_gauss(pic,psfsize,psfsize,sig_noise,[],0);
-
+        
+        %remove unnecessary black margin from blur kernal
         k = cropmatrix(k, 0.05);
         
         demoimg = imresize(k,[100 100]);
+        %resized blur kernal to 100x100
         %imshow(demoimg);
 
-        %NORMALIZING
+        %normalizing
         normA = demoimg - min(demoimg(:));
         normA = normA ./ max(normA(:));
         A = imhist(normA);
@@ -70,7 +74,8 @@ while i <= p
         
         %feature extraction
         [ gamma, sigma ] = feature_extract( A );
-
+        
+        %storing features
         gamma_val(i+1,j+1) = gamma;
         sigma_val(i+1,j+1) = sigma;
 
@@ -82,6 +87,7 @@ while i <= p
     j=0;
 end
 
+%storing all features
 save('extracted_vals.mat','gamma_val','sigma_val');
 
 
