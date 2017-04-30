@@ -20,7 +20,7 @@ img = (rgb2gray(imread(image)));
 
 %setting up block size
 [M N]=size(img);
-n=64;m=64;
+n=32;m=32;
 psfsize=9;
 p=floor(M/m);
 q=floor(N/n);
@@ -42,14 +42,14 @@ while i <= p
             if (M/m) ~= p
                 rightedge = M;
             else 
-                break
+                break;
             end
         end
         if j == q 
             if (N/n) ~= q
                 bottomedge = N;
             else 
-                break
+                break;
             end 
         end
         
@@ -58,7 +58,6 @@ while i <= p
 
         %calling blind deconvolution
         [k]=deconv_diagfe_filt_sps(pic,psfsize,psfsize,.01,[],0);
-        
         %[k]=deconv_freq_filt_gauss(pic,psfsize,psfsize,sig_noise,[],0);
         
         %remove unnecessary black margin from blur kernal
