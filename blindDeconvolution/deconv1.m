@@ -30,7 +30,7 @@ function [prob,kList,freeeng]=deconv1(prob,sig_noise_v)
        end
        
        %print free energy
-       sprintf('itr=%02d, free eng after x update: %f',itr,  prob.freeeng)
+       %sprintf('itr=%02d, free eng after x update: %f',itr,  prob.freeeng)
        if (nargout>2)
            freeeng(1,itr)=prob.freeeng;
        end
@@ -39,7 +39,7 @@ function [prob,kList,freeeng]=deconv1(prob,sig_noise_v)
        prob=update_k(prob);
        
        %print free energy
-       sprintf('itr=%02d, free eng after k update: %f',itr,  prob.freeeng)
+       %sprintf('itr=%02d, free eng after k update: %f',itr,  prob.freeeng)
        if (nargout>2)
            freeeng(2,itr)=prob.freeeng;
        end
