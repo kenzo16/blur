@@ -1,7 +1,7 @@
 % New feature Vi,j by combining b gamma and sigma
 load('W.mat');
 load('extracted_vals.mat');
-
+load('currentImage');
 [a,b] = size(gamma_val);
 w = w';
 V = zeros(1,1);
@@ -28,5 +28,5 @@ for i = 1:a
 end
 
 %Display final Image
-finalpic = dispImage(K);
+finalpic = dispImage(K, rgb2gray(imread(image)));
 imshow(finalpic);

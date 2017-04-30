@@ -1,10 +1,10 @@
-function [final] = dispImage( K )
+function [final] = dispImage( K , img )
     %function for displaying final image with tampered region darkened
-    img = (rgb2gray(imread('pic.png')));
+    
+   
     [M N]=size(img);
     n=64; % block size
     m=64; %
-    psfsize=9;
     i=0;j=0;
     p=floor(M/m);
     q=floor(N/n);
@@ -29,6 +29,7 @@ function [final] = dispImage( K )
             end
             %further modifications required!!!
             %regions blackened for now!!
+            K
             if(K(i+1,j+1) == 'M')
                 finalimg(i*n+1:rightedge,j*n+1:bottomedge) = img(i*n+1:rightedge,j*n+1:bottomedge)*0;
             else

@@ -2,6 +2,8 @@
 dirname='resdir'
 addpath(genpath('blindDeconvolution'));
 load test_data/sizeL
+image = 'pic.png'
+save('currentImage','image');
 
 %creating lookup table
 count = 1;
@@ -14,7 +16,7 @@ end
 save('lookupTable.mat','val');
 
 %loading image
-img = (rgb2gray(imread('pic.png')));
+img = (rgb2gray(imread(image)));
 
 %setting up block size
 [M N]=size(img);
