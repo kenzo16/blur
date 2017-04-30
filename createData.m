@@ -4,7 +4,8 @@ M = 0;
 dirname = 'dataset'
 
 M=0;
-for i = 1 : 5
+for i = 1 : 7
+    sprintf('Running on O%d',i);
     pic = sprintf('%s/O%d.jpg',dirname,i);
     img = (rgb2gray(imread(pic)));
     getDataSet(img , 'O' , M+1,'dataset_O.mat');
@@ -12,11 +13,16 @@ for i = 1 : 5
     [M N]=size(dataset);
 end
 
-%
-%for i = 1 : 7
-%    pic = sprintf('%s/M%d.jpg',dirname,i);
-%    img = (rgb2gray(imread(pic)));
-%    getDataSet(img , 'M' , M+1,'dataset_M.mat');
-%    load('dataset_M.mat');
-%    [M N]=size(dataset);
-%end
+
+for i = 1 : 9
+    sprintf('Running on M%d',i);
+    pic = sprintf('%s/M%d.jpg',dirname,i);
+    img = (rgb2gray(imread(pic)));
+    getDataSet(img , 'M' , M+1,'dataset_M.mat');
+    load('dataset_M.mat');
+    [M N]=size(dataset);
+end
+
+
+%Evalutating Classifier
+findThreshold
