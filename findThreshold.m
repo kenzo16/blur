@@ -1,4 +1,9 @@
     %for evaluating the threshold for the classification
+
+    %Evaluating w for threshold from the dataset
+    classifier
+    
+    
     load('W.mat');
     w = w';
     load('dataset_M.mat');

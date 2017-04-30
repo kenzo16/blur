@@ -1,8 +1,6 @@
 function [] = getDataSet( img , val , count , file )
 
 %SAME BLIND DECONVOLUTION AND ASSIGNS 'M' or 'O' for Motion blur or Out-of-focus blur respectively
-
-    
     sig_noise=0.01;
     load test_data/sizeL
 
@@ -14,8 +12,6 @@ function [] = getDataSet( img , val , count , file )
     i=0;j=0;
     p=floor(M/m);
     q=floor(N/n);
-
-    
     dataset = zeros(1,3);
 
     while i <= p
