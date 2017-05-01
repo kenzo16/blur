@@ -89,7 +89,7 @@ prob.y=y;
 %here we call the main deconvolution routine, in a coarse to fine scheme     
 [prob1,kListItr]=multires_deconv(prob,ret,sig_noise_v,dispOn,bmp_outname);
 k=prob1.k;
-%k=k/sum(k(:));
+k=k/sum(k(:));
 
 %final non blind deconvolution with the estimated kernel      
 %[ex]=deconvSps(y,k,edges_w,70);
