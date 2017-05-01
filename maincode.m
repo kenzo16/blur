@@ -20,7 +20,7 @@ img = (rgb2gray(imread(image)));
 
 %setting up block size
 [M N]=size(img);
-n=32;m=32;
+n=64;m=64;
 psfsize=9;
 p=floor(M/m);
 q=floor(N/n);
@@ -61,20 +61,21 @@ while i <= p
         %[k]=deconv_freq_filt_gauss(pic,psfsize,psfsize,sig_noise,[],0);
         
         %remove unnecessary black margin from blur kernal
-        k = cropmatrix(k, 0.05);
+        k = cropmatrix(k, 0.00);
         
-        demoimg = imresize(k,[100 100]);
         %resized blur kernal to 100x100
-        %imshow(demoimg);
-
-        %normalizing
-        normA = demoimg - min(demoimg(:));
-        normA = normA ./ max(normA(:));
-        A = imhist(normA);
-        A = A/sum(A);
+        demoimg = imresize(k,[100 100]);
         
+        %imshow(demoimg);
+        
+        %normalizing
+        %normA = demoimg - min(demoimg(:));
+        %normA = normA ./ max(normA(:));
+        %A = imhist(normA);
+        %A = normA/sum(normA(:));
+
         %feature extraction
-        [ gamma, sigma ] = feature_extract( A );
+        [ gamma, sigma ] = feature_extract2( demoimg/sum(demoimg(:)) );
         
         %storing features
         gamma_val(i+1,j+1) = gamma;
