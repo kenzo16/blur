@@ -3,7 +3,7 @@ load('W.mat');
 load('extracted_vals.mat');
 load('currentImage');
 [a,b] = size(gamma_val);
-
+w = [-0.7936 0.8899]';
 w = w';
 V = zeros(1,1);
 
@@ -17,7 +17,7 @@ end
 
 %loading Threshold from training data
 load('threshold.mat');
-
+threshold = -0.3
 %Classify with threshold
 for i = 1:a
     for j = 1:b
