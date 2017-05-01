@@ -69,18 +69,19 @@ while i <= p
         %imshow(demoimg);
         
         %normalizing
-        %normA = demoimg - min(demoimg(:));
-        %normA = normA ./ max(normA(:));
+        normA = demoimg - min(demoimg(:));
+        normA = normA / sum(normA(:));
         %A = imhist(normA);
         %A = normA/sum(normA(:));
 
         %feature extraction
-        [ gamma, sigma ] = feature_extract2( demoimg/sum(demoimg(:)) );
+        [ gamma, sigma ] = feature_extract2( normA );
         
         %storing features
         gamma_val(i+1,j+1) = gamma;
         sigma_val(i+1,j+1) = sigma;
-
+        gamma_val
+        
         count=count+1;
         j=j+1;
     end
