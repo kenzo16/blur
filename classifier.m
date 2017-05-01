@@ -4,8 +4,9 @@ m_data = dataset;
 load('dataset_O.mat');
 o_data = dataset;
 
-%scatter(m_data(:,1),m_data(:,2),6,'r'),hold on;
-%scatter(o_data(:,1),o_data(:,2),6,'b');
+%display scatter plot
+scatter(o_data(:,1),o_data(:,2),6,'r'),hold on;
+scatter(m_data(:,1),m_data(:,2),6,'b');
 
 % Number of observations of each class
 n1=size(m_data,1);
@@ -33,6 +34,5 @@ invsw = inv(sw);
 
 % W is for reducing the dimensionality to genrate non-linear transform
 w = invsw * (mu2-mu1)';
-w
 save('W.mat','w');
 backup = [-0.7936 0.8899];
