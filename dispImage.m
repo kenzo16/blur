@@ -3,8 +3,8 @@ function [final] = dispImage( K , img )
     
    
     [M N]=size(img);
-    n=32; % block size
-    m=32; %
+    n=64; % block size
+    m=64; %
     i=0;j=0;
     p=floor(M/m);
     q=floor(N/n);
