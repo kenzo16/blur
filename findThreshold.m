@@ -20,7 +20,7 @@
     end
     
     count = 1;
-    for thres = 0.0 : -.001 : -1.0
+    for thres = 0.0 : -.0001 : -1.0
         TPOS = 0; FPOS = 0; TNEG = 0; FNEG = 0;
         for i = 1:a
             A(i,1) = tempval(i);

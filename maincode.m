@@ -2,7 +2,7 @@
 dirname='resdir'
 addpath(genpath('blindDeconvolution'));
 load test_data/sizeL
-image = 'pic.png'
+image = 'pic.jpg'
 save('currentImage','image');
 
 %creating lookup table
