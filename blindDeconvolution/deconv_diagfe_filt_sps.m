@@ -1,4 +1,4 @@
-function [k]=deconv_diagfe_filt_sps(y,k_sz1,k_sz2,sig_noise,bmp_outname,dispOn,edges_w)
+function [k]=deconv_diagfe_filt_sps(y,k_sz1,k_sz2,sig_noise,bmp_outname,dispOn)
 %function [k,ex,ssde]=deconv_diagfe_filt_sps(y,k_sz1,k_sz2,x,sig_noise,bmp_outname,dispOn,edges_w)
 %blind deconvolution on an image, assuming a sparse MOG prior on the
 %derivatives
@@ -85,12 +85,12 @@ tf(ceil(k_sz1/2),ceil(k_sz2/2)+1)=1;
 tf=tf/sum(tf(:));
 prob.k=tf;     
 prob.y=y;
-tic
+
 %here we call the main deconvolution routine, in a coarse to fine scheme     
 [prob1,kListItr]=multires_deconv(prob,ret,sig_noise_v,dispOn,bmp_outname);
 k=prob1.k;
-k=k/sum(k(:));
-toc
+%k=k/sum(k(:));
+
 %final non blind deconvolution with the estimated kernel      
 %[ex]=deconvSps(y,k,edges_w,70);
 %imshow(ex);
