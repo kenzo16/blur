@@ -20,11 +20,11 @@ findThreshold
 
 %loading Threshold from training data
 load('threshold.mat');
-
+[a,b] = size(gamma_val);
 %Classify with threshold
 for i = 1:a
     for j = 1:b
-        if V(i,j) >= threshold 
+        if V(i,j) <= threshold 
             K(i,j) = 'M';
         else
             K(i,j) = 'O';
