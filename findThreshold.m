@@ -1,7 +1,6 @@
     %for evaluating the threshold for the classification
 
-    %Evaluating w for threshold from the dataset
-    classifier
+    
     
     
     load('W.mat');

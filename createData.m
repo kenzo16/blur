@@ -5,7 +5,7 @@ dirname = 'dataset'
 addpath(genpath('blindDeconvolution'));
 M=0;
 
-for i = 2 : 2
+for i = 2 : 3
     sprintf('Running on O%d',i);
     pic = sprintf('%s/O%d.jpg',dirname,i);
     img = (rgb2gray(imread(pic)));
@@ -15,7 +15,7 @@ for i = 2 : 2
 end
 
 M=0;
-for i = 2 : 2
+for i = 2 : 3
     sprintf('Running on M%d',i);
     pic = sprintf('%s/M%d.jpg',dirname,i);
     img = (rgb2gray(imread(pic)));

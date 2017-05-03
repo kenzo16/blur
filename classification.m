@@ -1,4 +1,8 @@
 % New feature Vi,j by combining b gamma and sigma
+%Evaluating w for threshold from the dataset
+classifier
+
+
 load('W.mat');
 load('extracted_vals.mat');
 load('currentImage');

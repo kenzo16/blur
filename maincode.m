@@ -1,10 +1,8 @@
 %loading directories 
-dirname='resdir'
 addpath(genpath('blindDeconvolution'));
-load test_data/sizeL
-image = 'pic.jpg'
-save('currentImage','image');
 
+image = 'test.jpg'
+save('currentImage','image');
 %creating lookup table
 count = 1;
 val = zeros(180,2);
@@ -16,7 +14,9 @@ end
 save('lookupTable.mat','val');
 
 %loading image
-img = (rgb2gray(imread(image)));
+I = (rgb2gray(imread(image)));
+H = fspecial('motion',5,0);
+img = imfilter(I,H,'replicate');
 
 %setting up block size
 [M N]=size(img);
