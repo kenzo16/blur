@@ -16,6 +16,7 @@ V = zeros(1,1);
 for i = 1:a
     for j = 1:b
         V(i,j) = w * [gamma_val(i,j) , sigma_val(i,j)]';
+       
     end
 end
 

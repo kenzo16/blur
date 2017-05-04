@@ -8,7 +8,7 @@ function [] = getDataSet( img , val , count , file )
 
     n=64; % block size
     m=64; %
-    psfsize=9;
+    psfsize=12;
     i=0;j=0;
     p=floor(M/m);
     q=floor(N/n);

@@ -1,7 +1,7 @@
 %loading directories 
 addpath(genpath('blindDeconvolution'));
 
-image = 'test.jpg'
+image = 'test_data\motion1.jpg'
 save('currentImage','image');
 %creating lookup table
 count = 1;
@@ -14,14 +14,13 @@ end
 save('lookupTable.mat','val');
 
 %loading image
-I = (rgb2gray(imread(image)));
-H = fspecial('motion',5,0);
-img = imfilter(I,H,'replicate');
+img = (rgb2gray(imread(image)));
+
 
 %setting up block size
 [M N]=size(img);
 n=64;m=64;
-psfsize=9;
+psfsize=13;
 p=floor(M/m);
 q=floor(N/n);
 
@@ -61,7 +60,7 @@ while i <= p
         %[k]=deconv_freq_filt_gauss(pic,psfsize,psfsize,sig_noise,[],0);
         
         %remove unnecessary black margin from blur kernal
-        k = cropmatrix(k, 0.00);
+        k = cropmatrix(k , 0);
         
         %resized blur kernal to 100x100
         demoimg = imresize(k,[100 100]);
@@ -71,8 +70,6 @@ while i <= p
         %normalizing
         normA = demoimg - min(demoimg(:));
         normA = normA / sum(normA(:));
-        %A = imhist(normA);
-        %A = normA/sum(normA(:));
 
         %feature extraction
         [ gamma, sigma ] = feature_extract2( normA );
@@ -91,7 +88,7 @@ while i <= p
 end
 
 %storing all features
-save('extracted_vals.mat','gamma_val','sigma_val');
+save('extracted_vals1.mat','gamma_val','sigma_val');
 
 
 
