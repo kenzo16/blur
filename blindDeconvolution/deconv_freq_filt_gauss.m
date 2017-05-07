@@ -88,22 +88,7 @@ prob.y=y;
 [prob1,kListItr]=multires_deconv(prob,ret,sig_noise_v,dispOn,bmp_outname);
 k=prob1.k;
 k=k/sum(k(:));
-     
-%final non blind deconvolution with the estimated kernel 
-[ex]=deconvSps(y,k,edges_w,70);
-[ex2]=deconvSps(y,flp(k),edges_w,70);
-
-%With a Gaussian prior we cannot resolve the right flip of the
-%filter, because the only different is in phase and phase is
-%invariant to L2 measure.
-%To decide which flip of the kernel gives a better image,
-%we try both flips and take the "sparser" one.
-dex=sum(sum(abs(conv2(ex,[-1 1],'valid')).^0.5))+sum(sum(abs(conv2(ex,[-1;1],'valid')).^0.5));
-dex2=sum(sum(abs(conv2(ex2,[-1 1],'valid')).^0.5))+sum(sum(abs(conv2(ex2,[-1;1],'valid')).^0.5));
-if (dex2<dex)
-  ex=ex2;
-  k=flp(k)
-end
+ 
 
 
 

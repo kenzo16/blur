@@ -3,30 +3,17 @@ function [final] = dispImage( K , img )
     
    
     [M N]=size(img);
-    n=64; % block size
-    m=64; %
+    n=32; % block size
+    m=32; %
     i=0;j=0;
     p=floor(M/m);
     q=floor(N/n);
 
-    while i <= p
-        while j <= q
+    while i < p
+        while j < q
             rightedge = (i+1)*n;
             bottomedge = (j+1)*m;
-            if i == p 
-                if (M/m) ~= p
-                    rightedge = M;
-                else 
-                    break
-                end
-            end
-            if j == q 
-                if (N/n) ~= q
-                    bottomedge = N;
-                else 
-                    break
-                end
-            end
+           
             %further modifications required!!!
             %regions blackened for now!!
             if(K(i+1,j+1) == 'M')

@@ -5,9 +5,9 @@ load('dataset_O.mat');
 o_data = dataset;
 
 %display scatter plot
-scatter(o_data(:,1),o_data(:,2),6,'r'),hold on;
-scatter(m_data(:,1),m_data(:,2),6,'b');
 
+scatter(o_data(:,1),o_data(:,2),6,'r'),hold on;;
+scatter(m_data(:,1),m_data(:,2),6,'b');
 % Number of observations of each class
 n1=size(m_data,1);
 n2=size(o_data,1);

@@ -6,39 +6,24 @@ function [] = getDataSet( img , val , count , file )
     load(file);
     [M N]=size(img);
 
-    n=64; % block size
-    m=64; %
-    psfsize=12;
+    n=32; % block size
+    m=32; %
+    psfsize=5;
     i=0;j=0;
     p=floor(M/m);
     q=floor(N/n);
     
 
-    while i <= p
-        while j <= q
+    while i < p
+        while j < q
             rightedge = (i+1)*n;
             bottomedge = (j+1)*m;
-            if i == p 
-                if (M/m) ~= p
-                    rightedge = M;
-                else 
-                    break
-                end
-            end
-            if j == q 
-                if (N/n) ~= q
-                    bottomedge = N;
-                else 
-                    break
-                end
-
-            end
-
+            
             pic = img(i*n+1:rightedge,j*n+1:bottomedge);
 
             
-            [k]=deconv_diagfe_filt_sps(pic,psfsize,psfsize,sig_noise,[],0);
-            %[k]=deconv_freq_filt_gauss(pic,psfsize,psfsize,sig_noise,[],0);
+            %[k]=deconv_diagfe_filt_sps(pic,psfsize,psfsize,sig_noise,[],0);
+            [k]=deconv_freq_filt_gauss(pic,psfsize,psfsize,sig_noise,[],0);
 
             k = cropmatrix(k, 0.00);
 
@@ -50,10 +35,6 @@ function [] = getDataSet( img , val , count , file )
             normA = demoimg - min(demoimg(:));
             normA = normA / sum(normA(:));
             
-            %histogram is unnecessary
-            %A = imhist(normA);
-            %A = A/sum(A);
-
             %feature extraction
             [ gamma, sigma ] = feature_extract2( normA );
             

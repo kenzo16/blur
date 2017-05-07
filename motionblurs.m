@@ -1,7 +1,7 @@
 
-I = (imread('asd.jpg'));
+I = (imread('pen.jpg'));
 
-H = fspecial('motion',5,45);
+H = fspecial('motion',4,45);
 pic = imfilter(I,H,'replicate');
 
 

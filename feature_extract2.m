@@ -17,7 +17,8 @@ function [ gamma, stddev ] = feature_extract2( values )
     %%STEP 4
     load('lookupTable.mat');
     tolerance = 0.0001;
-    for i = 1 : 281
+    [len temp] = size(val); 
+    for i = 1 : len
         gauss = val(i,1);
         shape = val(i,2);
         if  abs(gauss-ratio) < tolerance || gauss < ratio 

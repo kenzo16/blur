@@ -16,10 +16,9 @@ V = zeros(1,1);
 for i = 1:a
     for j = 1:b
         V(i,j) = w * [gamma_val(i,j) , sigma_val(i,j)]';
-       
     end
 end
-
+V
 %Finding Threshold
 findThreshold
 
@@ -27,6 +26,7 @@ findThreshold
 load('threshold.mat');
 [a,b] = size(gamma_val);
 %Classify with threshold
+
 for i = 1:a
     for j = 1:b
         if V(i,j) <= threshold 
